@@ -1,0 +1,12 @@
+# Run on non-standard ports so we can share an EC2 instance
+server:
+  applicationConnectors:
+  - type: http
+    port: 8090
+  adminConnectors:
+  - type: http
+    port: 8091
+# SWF configuration
+swfDomain: com.hlprmnky.widgco
+taskList: widgcoDecider
+swfEndpoint: https://swf.us-east-1.amazonaws.com

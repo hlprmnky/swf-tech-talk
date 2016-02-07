@@ -1,0 +1,5 @@
+#SWF config
+swfEndpoint: https://swf.us-east-1.amazonaws.com
+swfDomain: com.hlprmnky.widgco
+taskList: datastoreTaskList
+dataServiceEndpoint: http://localhost:8180/ # testing all on one instance

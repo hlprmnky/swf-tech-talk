@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <changeSet author="ec2-user (generated)" id="1454862403995-1">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="parts_part_no_seq"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-2">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="parts_part_no_seq1"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-3">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="suppliers_supplier_no_seq"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-4">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="suppliers_supplier_no_seq1"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-5">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="widget_parts_widget_parts_no_seq"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-6">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="widget_parts_widget_parts_no_seq1"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-7">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="widgets_widget_no_seq"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-8">
+        <createSequence catalogName="widgcodb" schemaName="public" sequenceName="widgets_widget_no_seq1"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-9">
+        <createTable catalogName="widgcodb" schemaName="public" tableName="parts">
+            <column autoIncrement="true" name="part_no" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="parts_pkey"/>
+            </column>
+            <column name="name" type="TEXT"/>
+            <column name="supplier_no" type="INT"/>
+            <column name="on_hand_qty" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-10">
+        <createTable catalogName="widgcodb" schemaName="public" tableName="suppliers">
+            <column autoIncrement="true" name="supplier_no" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="suppliers_pkey"/>
+            </column>
+            <column name="name" type="TEXT"/>
+            <column name="address" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-11">
+        <createTable catalogName="widgcodb" schemaName="public" tableName="widget_parts">
+            <column autoIncrement="true" name="widget_parts_no" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="widget_parts_pkey"/>
+            </column>
+            <column name="widget_no" type="INT"/>
+            <column name="part_no" type="INT"/>
+            <column name="required_qty" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-12">
+        <createTable catalogName="widgcodb" schemaName="public" tableName="widgets">
+            <column autoIncrement="true" name="widget_no" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="widgets_pkey"/>
+            </column>
+            <column name="name" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-13">
+        <addForeignKeyConstraint baseColumnNames="supplier_no" baseTableCatalogName="widgcodb" baseTableName="parts" baseTableSchemaName="public" constraintName="parts_supplier_no_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="supplier_no" referencedTableCatalogName="widgcodb" referencedTableName="suppliers" referencedTableSchemaName="public"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-14">
+        <addForeignKeyConstraint baseColumnNames="part_no" baseTableCatalogName="widgcodb" baseTableName="widget_parts" baseTableSchemaName="public" constraintName="widget_parts_part_no_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="part_no" referencedTableCatalogName="widgcodb" referencedTableName="parts" referencedTableSchemaName="public"/>
+    </changeSet>
+    <changeSet author="ec2-user (generated)" id="1454862403995-15">
+        <addForeignKeyConstraint baseColumnNames="widget_no" baseTableCatalogName="widgcodb" baseTableName="widget_parts" baseTableSchemaName="public" constraintName="widget_parts_widget_no_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="widget_no" referencedTableCatalogName="widgcodb" referencedTableName="widgets" referencedTableSchemaName="public"/>
+    </changeSet>
+</databaseChangeLog>
